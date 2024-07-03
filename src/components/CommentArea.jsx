@@ -9,7 +9,7 @@ const CommentArea = ({ asin }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  useEffect(() => {
+  
     const fetchComments = async () => {
       setIsLoading(true);
       try {
@@ -37,7 +37,7 @@ const CommentArea = ({ asin }) => {
         setIsError(true);
       }
     };
-
+    useEffect(() => {
     if (asin) {
       fetchComments();
     }
@@ -47,8 +47,8 @@ const CommentArea = ({ asin }) => {
     <div className="text-center">
       {isLoading && <Loading />}
       {isError && <Error />}
-      <AddComment asin={asin} />
-      <CommentList commentsToShow={comments} />
+      <AddComment asin={asin} fetchComments = {fetchComments}/>
+      <CommentList commentsToShow={comments}  fetchComments = {fetchComments} />
     </div>
   );
 };

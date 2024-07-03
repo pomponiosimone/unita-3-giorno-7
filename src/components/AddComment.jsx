@@ -36,6 +36,9 @@ const AddComment = ({ asin }) => {
           rate: 1,
           elementId: asin,
         });
+        this.props.fetchComments();
+
+        
       } else {
         throw new Error('Qualcosa è andato storto');
       }
